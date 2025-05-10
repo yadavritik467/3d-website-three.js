@@ -1,18 +1,18 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
-import { ModelViewer } from './components/ModelViewer';
+
+import { Route, Routes } from 'react-router-dom';
 import './App.css'; // Make sure this is imported
+import CanvasEle from './pages/CanvasEle';
+import Room from './pages/Room';
 
 export default function App() {
   return (
-    <div className="canvas-container">
-      <Canvas camera={{ position: [0, 2, 10], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
-        <Environment preset="city" />
-        <ModelViewer />
-        <OrbitControls />
-      </Canvas>
+    <div style={{ width: '100vw', height: '100vh' }}>
+
+      <Routes>
+        <Route path='' element={<CanvasEle />} />
+        <Route path='/room/:roomID' element={<Room />} />
+      </Routes>
+
     </div>
   );
 }
